@@ -1,0 +1,18 @@
+# 의존성
+node_modules/
+
+# 환경변수
+.env
+
+# 백엔드 런타임 데이터
+data/
+
+# GitHub Pages에는 올리지 않을 백엔드
+server.js
+lib/
+package.json
+package-lock.json
+
+# OS/에디터
+.DS_Store
+Thumbs.db

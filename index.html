@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DIMCHI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <!-- 왼쪽 고정 네비게이션 (모바일에서는 하단 바로 전환됨) -->
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <a href="#home" data-page="home">홈</a>
+        <a href="#activity" data-page="activity">활동</a>
+        <a href="#novels" data-page="novels">소설</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button type="button" id="themeToggle" class="theme-toggle">다크</button>
+      </div>
+    </aside>
+
+    <!-- 오른쪽 메인 콘텐츠 패널 -->
+    <main class="main-panel" id="app">
+
+      <!-- ============ 홈 ============ -->
+      <section class="page page-home" id="page-home" data-page="home">
+        <div class="home-center">
+          <div class="profile-photo-wrap" id="profilePhotoWrap">
+            <img
+              class="profile-photo"
+              id="profilePhoto"
+              alt="DIMCHI 프로필 사진"
+              draggable="false"
+            />
+          </div>
+          <h1 class="home-name">DIMCHI</h1>
+          <!-- 아래 문구는 script.js 상단의 profile.statusLine 값을 채우면 표시됩니다 -->
+          <p class="home-bio" id="homeBio" hidden></p>
+
+          <div class="status-box discord-box" id="discordBox">
+            <div class="status-box-row">
+              <span class="discord-dot" id="discordDot"></span>
+              <span class="status-box-label" id="discordStatusText">오프라인</span>
+              <span id="discordUptimeText" class="presence-uptime"></span>
+            </div>
+            <p class="status-box-desc" id="discordStatusDesc"></p>
+          </div>
+
+          <div class="status-box spotify-box is-quiet" id="spotifyBox">
+            <p class="now-playing-quiet" id="nowPlayingQuiet">지금은 조용히 있는 중.</p>
+            <div class="now-playing-track" id="nowPlayingTrack" hidden>
+              <img class="np-cover" id="npCover" alt="" />
+              <div class="np-info">
+                <p class="np-title" id="npTitle"></p>
+                <p class="np-artist" id="npArtist"></p>
+                <div class="np-progress"><div class="np-progress-bar" id="npProgressBar"></div></div>
+                <div class="np-time">
+                  <span id="npCurrent">0:00</span>
+                  <span id="npDuration">0:00</span>
+                </div>
+              </div>
+              <!-- 재생 중일 때만 나타나는 독립 기능. 오디오는 절대 프록시하지 않고
+                   Spotify 공식 링크만 새 탭으로 연다 -->
+              <a class="listen-together" id="listenTogetherBtn" target="_blank" rel="noopener noreferrer" hidden>같이 듣기 ↗</a>
+            </div>
+          </div>
+
+          <div class="link-row" id="linkRow"></div>
+
+          <p class="pfp-credit">PFP by <span id="pfpCreditName">@rmflawoddl_</span></p>
+        </div>
+      </section>
+
+      <!-- ============ 활동 ============ -->
+      <!-- script.js 상단(또는 activities.js)의 activities 배열에 항목을 추가하면
+           여기에 자동으로 표시됩니다. 샘플 데이터는 넣지 않았습니다. -->
+      <section class="page" id="page-activity" data-page="activity" hidden>
+        <h1 class="page-title">활동</h1>
+        <p class="empty-hint" id="activitiesEmpty">아직 등록된 활동이 없습니다.</p>
+        <div class="activity-list" id="activityList"></div>
+      </section>
+
+      <!-- ============ 소설 ============ -->
+      <!-- novels.js의 novels 배열에 항목을 추가하면 목록에 자동으로 표시됩니다.
+           샘플 소설은 넣지 않았습니다. -->
+      <section class="page" id="page-novels" data-page="novels" hidden>
+        <div class="page" id="novels-list">
+          <h1 class="page-title">소설</h1>
+          <p class="empty-hint" id="novelsEmpty">아직 공개된 작품이 없습니다.</p>
+          <div class="novel-list" id="novelList"></div>
+        </div>
+        <div class="page" id="novels-reader" hidden>
+          <a href="#novels" class="back-link">← 목록으로</a>
+          <h1 class="novel-title" id="novelReaderTitle"></h1>
+          <p class="novel-subtitle" id="novelReaderSubtitle"></p>
+          <p class="novel-date" id="novelReaderDate"></p>
+          <div class="novel-content" id="novelReaderContent"></div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 모바일 하단 네비게이션 (같은 링크를 반복 표시, CSS로 화면 크기에 따라 전환) -->
+    <nav class="bottom-nav" aria-hidden="true">
+      <a href="#home" data-page="home">홈</a>
+      <a href="#activity" data-page="activity">활동</a>
+      <a href="#novels" data-page="novels">소설</a>
+      <button type="button" class="theme-toggle-mobile" id="themeToggleMobile">다크</button>
+    </nav>
+
+  </div>
+
+  <script src="novels.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
