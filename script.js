@@ -485,7 +485,7 @@ const activities = [];
   async function pollSpotify() {
     if (!npQuiet) return;
     try {
-      const res = await fetch("/api/spotify/now-playing");
+      const res = await fetch("https://aurora-course-tags-visits.trycloudflare.com/api/spotify/now-playing");
       const data = await res.json();
       const playing = Boolean(data.connected && data.isPlaying && data.track);
 
@@ -571,7 +571,7 @@ const activities = [];
   async function pollDiscord() {
     if (!discordDot) return;
     try {
-      const res = await fetch("/api/discord/status");
+      const res = await fetch("https://aurora-course-tags-visits.trycloudflare.com/api/discord/status");
       const data = await res.json();
       const status = ["online", "idle", "dnd", "offline"].includes(data.status)
         ? data.status
